@@ -219,12 +219,11 @@ more details on how the query is built."
                         (string-join qutebrowser-history-exclusion-patterns
                                      "' AND url NOT LIKE '")))
          (order (when qutebrowser-history-order-by
-                  (format "ORDER BY %s" qutebrowser-history-order-by)))
+                  (format "ORDER BY last_atime DESC")))
          (query (format "SELECT url,substr(title,0,%d)
-                         FROM History
+                         FROM CompletionHistory
                          %s
-                         GROUP BY url
-                         %s"
+                         %s LIMIT 1000"
                         (1- qutebrowser-title-display-length)
                         where
                         order)))
