@@ -533,7 +533,7 @@ TARGET specifies where to open it, or `qutebrowser-default-open-target' if nil."
 (defun qutebrowser-theme-export ()
   "Export selected Emacs faces to Qutebrowser theme format."
   (interactive)
-  (with-temp-buffer
+  (with-temp-file "~/.config/qutebrowser/emacs_theme.py"
     (insert "# Qutebrowser theme exported from Emacs\n\n")
     (dolist (mapping qutebrowser-theme-export-face-mappings)
       (let* ((qute-face (symbol-name (car mapping)))
@@ -543,8 +543,7 @@ TARGET specifies where to open it, or `qutebrowser-default-open-target' if nil."
              (color (face-attribute emacs-face attribute nil 'default))
              (hex-color (apply #'color-rgb-to-hex
                                (append (color-name-to-rgb color) '(2)))))
-        (insert (format "c.colors.%s = '%s'\n" qute-face hex-color))))
-    (write-file "~/.config/qutebrowser/emacs_theme.py")))
+        (insert (format "c.colors.%s = '%s'\n" qute-face hex-color))))))
 
 (defun qutebrowser-theme-export-and-apply (&rest _)
   "Export and apply theme to running Qutebrowser instance."
