@@ -512,7 +512,7 @@ TARGET specifies where to open it, or `qutebrowser-default-open-target' if nil."
 ;;;###autoload
 (define-globalized-minor-mode global-qutebrowser-exwm-mode
   qutebrowser-exwm-mode
-  #'qutebrowser-exwm-mode-maybe-enable
+  qutebrowser-exwm-mode-maybe-enable
   (if global-qutebrowser-exwm-mode
       (add-hook 'exwm-manage-finish-hook #'qutebrowser-exwm-mode-maybe-enable)
     (remove-hook 'exwm-manage-finish-hook #'qutebrowser-exwm-mode-maybe-enable)))
