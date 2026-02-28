@@ -126,7 +126,7 @@ Emacs configuration:
 :END:
 
 - *Qutebrowser:* This probably goes without saying.
-- *EXWM:* Most features are targetting EXWM, and the main aim of the
+- *EXWM:* Most features are targeting EXWM, and the main aim of the
   package is to improve usage of Qutebrowser inside EXWM. It should
   still be possible to get some use out of the package even if you
   aren't an EXWM user though.
